@@ -27,10 +27,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             MaterialTheme(colorScheme = darkColorScheme()) {
                 var settings by remember { mutableStateOf(false) }
-                // As a launcher, Back must never close the shelf
+                // As a launcher, Back must never close the HUD
                 BackHandler(enabled = true) { if (settings) settings = false }
                 if (settings) SettingsScreen(vm) { settings = false }
-                else ShelfScreen(vm) { settings = true }
+                else HudScreen(vm) { settings = true }
             }
         }
     }
